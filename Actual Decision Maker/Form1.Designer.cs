@@ -30,7 +30,15 @@
         {
             this.TableViewer = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
+            this.TotalScoreTable = new System.Windows.Forms.DataGridView();
+            this.TotalScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.deletePreviousCategoryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.deleteItemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.newFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
@@ -48,15 +56,15 @@
             this.FieldWorthTXT = new System.Windows.Forms.NumericUpDown();
             this.label4 = new System.Windows.Forms.Label();
             this.AddFieldCMD = new System.Windows.Forms.Button();
-            this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
-            this.TotalScoreTable = new System.Windows.Forms.DataGridView();
-            this.TotalScore = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.deletePreviousRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.TableViewer)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
+            this.tableLayoutPanel7.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TotalScoreTable)).BeginInit();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).BeginInit();
             this.splitContainer2.Panel1.SuspendLayout();
@@ -70,8 +78,6 @@
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWorthTXT)).BeginInit();
-            this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TotalScoreTable)).BeginInit();
             this.SuspendLayout();
             // 
             // TableViewer
@@ -109,15 +115,93 @@
             this.splitContainer1.SplitterDistance = 225;
             this.splitContainer1.TabIndex = 1;
             // 
+            // tableLayoutPanel7
+            // 
+            this.tableLayoutPanel7.ColumnCount = 2;
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.125F));
+            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.875F));
+            this.tableLayoutPanel7.Controls.Add(this.TotalScoreTable, 1, 0);
+            this.tableLayoutPanel7.Controls.Add(this.TableViewer, 0, 0);
+            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
+            this.tableLayoutPanel7.RowCount = 1;
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 201);
+            this.tableLayoutPanel7.TabIndex = 2;
+            // 
+            // TotalScoreTable
+            // 
+            this.TotalScoreTable.AllowUserToAddRows = false;
+            this.TotalScoreTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.TotalScoreTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.TotalScoreTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.TotalScore});
+            this.TotalScoreTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TotalScoreTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.TotalScoreTable.Location = new System.Drawing.Point(660, 3);
+            this.TotalScoreTable.MultiSelect = false;
+            this.TotalScoreTable.Name = "TotalScoreTable";
+            this.TotalScoreTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.TotalScoreTable.Size = new System.Drawing.Size(137, 195);
+            this.TotalScoreTable.TabIndex = 1;
+            // 
+            // TotalScore
+            // 
+            this.TotalScore.Frozen = true;
+            this.TotalScore.HeaderText = "Total Score";
+            this.TotalScore.Name = "TotalScore";
+            this.TotalScore.ReadOnly = true;
+            // 
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.deletePreviousRowToolStripMenuItem});
+            this.deletePreviousCategoryToolStripMenuItem,
+            this.deleteItemToolStripMenuItem,
+            this.newFileToolStripMenuItem,
+            this.openFileToolStripMenuItem,
+            this.saveFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(800, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // deletePreviousCategoryToolStripMenuItem
+            // 
+            this.deletePreviousCategoryToolStripMenuItem.Name = "deletePreviousCategoryToolStripMenuItem";
+            this.deletePreviousCategoryToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
+            this.deletePreviousCategoryToolStripMenuItem.Text = "Delete Category";
+            this.deletePreviousCategoryToolStripMenuItem.Click += new System.EventHandler(this.deletePreviousCategoryToolStripMenuItem_Click);
+            // 
+            // deleteItemToolStripMenuItem
+            // 
+            this.deleteItemToolStripMenuItem.Name = "deleteItemToolStripMenuItem";
+            this.deleteItemToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
+            this.deleteItemToolStripMenuItem.Text = "Delete Item";
+            this.deleteItemToolStripMenuItem.Click += new System.EventHandler(this.deleteItemToolStripMenuItem_Click);
+            // 
+            // newFileToolStripMenuItem
+            // 
+            this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
+            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.newFileToolStripMenuItem.Text = "New File";
+            this.newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
+            // 
+            // openFileToolStripMenuItem
+            // 
+            this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
+            this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
+            // 
+            // saveFileToolStripMenuItem
+            // 
+            this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
+            this.saveFileToolStripMenuItem.Text = "Save File";
+            this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
             // splitContainer2
             // 
@@ -347,52 +431,16 @@
             this.AddFieldCMD.UseVisualStyleBackColor = true;
             this.AddFieldCMD.Click += new System.EventHandler(this.AddFieldCMD_Click);
             // 
-            // tableLayoutPanel7
+            // saveFileDialog1
             // 
-            this.tableLayoutPanel7.ColumnCount = 2;
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 82.125F));
-            this.tableLayoutPanel7.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 17.875F));
-            this.tableLayoutPanel7.Controls.Add(this.TotalScoreTable, 1, 0);
-            this.tableLayoutPanel7.Controls.Add(this.TableViewer, 0, 0);
-            this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 24);
-            this.tableLayoutPanel7.Name = "tableLayoutPanel7";
-            this.tableLayoutPanel7.RowCount = 1;
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 201);
-            this.tableLayoutPanel7.TabIndex = 2;
+            this.saveFileDialog1.CheckFileExists = true;
+            this.saveFileDialog1.DefaultExt = "*.txt";
+            this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
-            // TotalScoreTable
+            // openFileDialog1
             // 
-            this.TotalScoreTable.AllowUserToAddRows = false;
-            this.TotalScoreTable.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.TotalScoreTable.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.TotalScoreTable.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.TotalScore});
-            this.TotalScoreTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.TotalScoreTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.TotalScoreTable.Location = new System.Drawing.Point(660, 3);
-            this.TotalScoreTable.MultiSelect = false;
-            this.TotalScoreTable.Name = "TotalScoreTable";
-            this.TotalScoreTable.ReadOnly = true;
-            this.TotalScoreTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TotalScoreTable.Size = new System.Drawing.Size(137, 195);
-            this.TotalScoreTable.TabIndex = 1;
-            // 
-            // TotalScore
-            // 
-            this.TotalScore.Frozen = true;
-            this.TotalScore.HeaderText = "Total Score";
-            this.TotalScore.Name = "TotalScore";
-            this.TotalScore.ReadOnly = true;
-            // 
-            // deletePreviousRowToolStripMenuItem
-            // 
-            this.deletePreviousRowToolStripMenuItem.Name = "deletePreviousRowToolStripMenuItem";
-            this.deletePreviousRowToolStripMenuItem.Size = new System.Drawing.Size(151, 20);
-            this.deletePreviousRowToolStripMenuItem.Text = "Delete Previous Category";
-            this.deletePreviousRowToolStripMenuItem.Click += new System.EventHandler(this.deletePreviousRowToolStripMenuItem_Click);
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // Form1
             // 
@@ -409,6 +457,8 @@
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
+            this.tableLayoutPanel7.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.TotalScoreTable)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer2.Panel1.ResumeLayout(false);
@@ -427,8 +477,6 @@
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.FieldWorthTXT)).EndInit();
-            this.tableLayoutPanel7.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.TotalScoreTable)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -458,6 +506,12 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel7;
         private System.Windows.Forms.DataGridView TotalScoreTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalScore;
-        private System.Windows.Forms.ToolStripMenuItem deletePreviousRowToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deletePreviousCategoryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem deleteItemToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem newFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveFileToolStripMenuItem;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

@@ -1,9 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -49,6 +53,8 @@ namespace Actual_Decision_Maker
 
                 CategoryNameTXT.Text = "";
                 CategoryWorthTXT.Value = 0;
+
+                FieldValueTXT.Focus();
             }
         }
 
@@ -88,7 +94,6 @@ namespace Actual_Decision_Maker
             {
                 fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inValue = FieldValueTXT.Text;
                 TableViewer.SelectedCells[0].Value = FieldValueTXT.Text;
-
             }
         }
 
@@ -132,11 +137,100 @@ namespace Actual_Decision_Maker
             WorkOutTotalScores();
         }
 
-        private void deletePreviousRowToolStripMenuItem_Click(object sender, EventArgs e)
+        private void deletePreviousCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            TableViewer.Columns.RemoveAt(TableViewer.Columns.Count - 1);
-            fields.RemoveAt(fields.Count - 1);
-            categories.RemoveAt(categories.Count - 1);
+            TableViewer.Columns.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
+            fields.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
+            categories.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
         }
+
+        private void deleteItemToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TableViewer.Rows.RemoveAt(TableViewer.SelectedCells[0].RowIndex);
+            for (int i = 0; i < fields.Count; i++)
+            {
+                fields[i].RemoveAt(TableViewer.SelectedCells[0].RowIndex);
+            }
+        }
+
+        private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            categories.Clear();
+            fields.Clear();
+            TableViewer.Columns.Clear();
+            TableViewer.Rows.Clear();
+            TotalScoreTable.Rows.Clear();
+            TotalScoreTable.Columns.Add(new DataGridViewColumn()
+            {
+                Name = "TotalScore",
+                HeaderText = "Total Score",
+                Frozen = true
+            });
+            CategoryNameTXT.Clear();
+            CategoryWorthTXT.Value = 0;
+            FieldValueTXT.Clear();
+            FieldWorthTXT.Value = 0;
+        }
+
+        private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            saveFileDialog1.ShowDialog();
+        }
+
+        private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            string categoriesJSON = JsonConvert.SerializeObject(new Table()
+            {
+                categories = categories,
+                fields = fields
+            });
+
+            StreamWriter writer = new StreamWriter(saveFileDialog1.FileName);
+            writer.Write(categoriesJSON);
+            writer.Close();
+        }
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            openFileDialog1.ShowDialog();
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            StreamReader reader = new StreamReader(openFileDialog1.FileName);
+            categories = JsonConvert.DeserializeObject<Table>(reader.ReadToEnd()).categories;
+            fields = JsonConvert.DeserializeObject<Table>(reader.ReadToEnd()).fields;
+
+            foreach (Category category in categories)
+            {
+                TableViewer.Columns.Add(new DataGridViewColumn()
+                {
+                    Name = category.inName,
+                    HeaderText = category.inName,
+                    Resizable = DataGridViewTriState.True,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    CellTemplate = new DataGridViewTextBoxCell()
+                });
+            }
+
+
+            for (int i = 0; i < fields[0].Count; i++)
+            {
+                TableViewer.Rows.Add();
+                TotalScoreTable.Rows.Add();
+                for (int j = 0; j < categories.Count; j++)
+                {
+                    TableViewer.Rows[i].Cells[j].Value = fields[j][i].inValue;
+                }
+            }
+
+            WorkOutTotalScores();
+        }
+    }
+
+    public class Table
+    {
+        public List<Category> categories;
+        public List<List<Field>> fields;
     }
 }

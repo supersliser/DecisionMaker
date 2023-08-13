@@ -34,40 +34,6 @@ namespace Actual_Decision_Maker
             //        break;
             //}
         }
-
-        private static int DisplayStartMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Welcome to Decision Maker");
-            Console.WriteLine("Please select an option:");
-            Console.WriteLine("1.Create new table");
-            Console.WriteLine("2.Open previous table");
-            Console.WriteLine("3.Exort to excel");
-            Console.WriteLine("4.Exit");
-            var input = Console.ReadLine();
-            while (input != "1" || input != "2" || input != "3" || input != "4")
-            {
-                Console.WriteLine("incorrect value enterred, please try again");
-                input = Console.ReadLine();
-            }
-            return int.Parse(input);
-        }
-
-        private static void CreateNewTable()
-        {
-            Console.WriteLine("Please enter the name of your new table");
-            table = new Table();
-            table.name = Console.ReadLine();
-
-            Console.WriteLine("Please enter the location of your table");
-            table.location = Console.ReadLine();
-        }
-
-        private static void EditTableMenu()
-        {
-            Console.Clear();
-            Console.WriteLine("Please select an option:");
-        }
     }
 
     class TableTemp
@@ -81,7 +47,7 @@ namespace Actual_Decision_Maker
         public int y;
     }
 
-    class Category
+    public class Category
     {
         protected string Name;
         protected int Value;
@@ -111,7 +77,7 @@ namespace Actual_Decision_Maker
         }
     }
 
-    class Field
+    public class Field
     {
         protected string Value;
         protected Quality Quality;

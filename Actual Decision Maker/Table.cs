@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Actual_Decision_Maker
 {
-    internal class Table
+    internal class TableIgnore
     {
         public string name;
         public string location;
