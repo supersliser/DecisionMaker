@@ -147,7 +147,7 @@ namespace Actual_Decision_Maker
         }
     }
 
-    enum Quality
+    public enum Quality
     {
         good = 1,
         neutral = 0,
