@@ -33,8 +33,8 @@ namespace Actual_Decision_Maker
                 temp.inName = CategoryNameTXT.Text;
                 temp.inValue = (int)CategoryWorthTXT.Value;
                 temp.stringType = CategoryTypeTXT.Text;
-                temp.successValue = (int)CategorySuccessTXT.Value;
-                temp.failValue = (int)CategoryFailTXT.Value;
+                temp.successValue = CategorySuccessTXT.Value;
+                temp.failValue = CategoryFailTXT.Value;
 
                 if (!categories.Exists(x => x.inName == temp.inName))
                 {
@@ -315,10 +315,12 @@ namespace Actual_Decision_Maker
                     CategoryFailTXT.Enabled = false;
                     CategoryFailTXT.Maximum = 0;
                     CategoryFailTXT.Minimum = 0;
+                    CategoryFailTXT.DecimalPlaces = 0;
 
                     CategorySuccessTXT.Enabled = false;
                     CategorySuccessTXT.Maximum = 0;
                     CategorySuccessTXT.Minimum = 0;
+                    CategorySuccessTXT.DecimalPlaces = 0;
 
                     FieldWorthTXT.Enabled = true;
                     break;
@@ -326,10 +328,12 @@ namespace Actual_Decision_Maker
                     CategoryFailTXT.Enabled = false;
                     CategoryFailTXT.Maximum = 0;
                     CategoryFailTXT.Minimum = 0;
+                    CategoryFailTXT.DecimalPlaces = 0;
 
                     CategorySuccessTXT.Enabled = false;
                     CategorySuccessTXT.Maximum = 1;
                     CategorySuccessTXT.Minimum = 1;
+                    CategorySuccessTXT.DecimalPlaces = 0;
 
                     FieldWorthTXT.Enabled = false;
                     break;
@@ -337,10 +341,13 @@ namespace Actual_Decision_Maker
                     CategoryFailTXT.Enabled = true;
                     CategoryFailTXT.Maximum = 0;
                     CategoryFailTXT.Minimum = -100000;
+                    CategoryFailTXT.DecimalPlaces = 3;
 
                     CategorySuccessTXT.Enabled = true;
                     CategorySuccessTXT.Maximum = 100000;
                     CategorySuccessTXT.Minimum = 0;
+                    CategorySuccessTXT.DecimalPlaces = 3;
+
 
                     FieldWorthTXT.Enabled = false;
                     break;
@@ -348,10 +355,12 @@ namespace Actual_Decision_Maker
                     CategoryFailTXT.Enabled = true;
                     CategoryFailTXT.Maximum = 100000;
                     CategoryFailTXT.Minimum = 0;
+                    CategoryFailTXT.DecimalPlaces = 2;
 
                     CategorySuccessTXT.Enabled = true;
                     CategorySuccessTXT.Maximum = 0;
                     CategorySuccessTXT.Minimum = 0;
+                    CategorySuccessTXT.DecimalPlaces = 2;
 
                     FieldWorthTXT.Enabled = false;
                     break;
@@ -372,7 +381,7 @@ namespace Actual_Decision_Maker
 
             if (TableViewer.SelectedCells.Count > 0)
             {
-                categories[TableViewer.SelectedCells[0].ColumnIndex].failValue = (int)CategoryFailTXT.Value;
+                categories[TableViewer.SelectedCells[0].ColumnIndex].failValue = CategoryFailTXT.Value;
                 CalculateValues();
             }
         }
@@ -391,7 +400,7 @@ namespace Actual_Decision_Maker
 
             if (TableViewer.SelectedCells.Count > 0)
             {
-                categories[TableViewer.SelectedCells[0].ColumnIndex].successValue = (int)CategorySuccessTXT.Value;
+                categories[TableViewer.SelectedCells[0].ColumnIndex].successValue = CategorySuccessTXT.Value;
                 CalculateValues();
             }
         }

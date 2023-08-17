@@ -51,8 +51,8 @@ namespace Actual_Decision_Maker
         protected string Name;
         protected int Value;
         protected int Type = 0;
-        protected int FailCriteria = 0;
-        protected int SuccessCriteria = 0;
+        protected decimal FailCriteria = 0;
+        protected decimal SuccessCriteria = 0;
 
         public string inName
         {
@@ -127,7 +127,7 @@ namespace Actual_Decision_Maker
             }
         }
 
-        public int failValue
+        public decimal failValue
         {
             set
             {
@@ -139,7 +139,7 @@ namespace Actual_Decision_Maker
             }
         }
 
-        public int successValue
+        public decimal successValue
         {
             set
             {
