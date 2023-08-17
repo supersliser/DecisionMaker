@@ -13,7 +13,6 @@ namespace Actual_Decision_Maker
 {
     internal static class Program
     {
-        static Table table;
 
         [STAThread]
         static void Main()
@@ -51,6 +50,9 @@ namespace Actual_Decision_Maker
     {
         protected string Name;
         protected int Value;
+        protected int Type = 0;
+        protected int FailCriteria = 0;
+        protected int SuccessCriteria = 0;
 
         public string inName
         {
@@ -73,6 +75,79 @@ namespace Actual_Decision_Maker
             get
             {
                 return Value;
+            }
+        }
+
+        public TypeValue inType
+        {
+            set
+            {
+                Type = (int)value;
+            }
+            get
+            {
+                return (TypeValue)Type;
+            }
+        }
+
+        public string stringType
+        {
+            set
+            {
+                switch (value)
+                {
+                    case "General":
+                        Type = 0;
+                        break;
+                    case "Boolean":
+                        Type = 1;
+                        break;
+                    case "Number":
+                        Type = 2;
+                        break;
+                    case "Price":
+                        Type = 3;
+                        break;
+                }
+            }
+            get
+            {
+                switch (Type)
+                {
+                    case 0:
+                        return "General";
+                    case 1:
+                        return "Boolean";
+                    case 2:
+                        return "Number";
+                    case 3:
+                        return "Price";
+                }
+                return "General";
+            }
+        }
+
+        public int failValue
+        {
+            set
+            {
+                FailCriteria = value;
+            }
+            get
+            {
+                return FailCriteria;
+            }
+        }
+
+        public int successValue
+        {
+            set
+            {
+                SuccessCriteria = value;
+            }
+            get
+            {
+                return SuccessCriteria;
             }
         }
     }
@@ -147,10 +222,18 @@ namespace Actual_Decision_Maker
         }
     }
 
-    enum Quality
+    public enum Quality
     {
         good = 1,
         neutral = 0,
         bad = -1
+    }
+
+    public enum TypeValue
+    {
+        general = 0,
+        boolean = 1,
+        number = 2,
+        price = 3,
     }
 }
