@@ -339,13 +339,13 @@ namespace Actual_Decision_Maker
                     break;
                 case TypeValue.number:
                     CategoryFailTXT.Enabled = true;
-                    CategoryFailTXT.Maximum = 0;
+                    CategoryFailTXT.Maximum = 100000;
                     CategoryFailTXT.Minimum = -100000;
                     CategoryFailTXT.DecimalPlaces = 3;
 
                     CategorySuccessTXT.Enabled = true;
                     CategorySuccessTXT.Maximum = 100000;
-                    CategorySuccessTXT.Minimum = 0;
+                    CategorySuccessTXT.Minimum = -100000;
                     CategorySuccessTXT.DecimalPlaces = 3;
 
 
@@ -354,12 +354,12 @@ namespace Actual_Decision_Maker
                 case TypeValue.price:
                     CategoryFailTXT.Enabled = true;
                     CategoryFailTXT.Maximum = 100000;
-                    CategoryFailTXT.Minimum = 0;
+                    CategoryFailTXT.Minimum = -100000;
                     CategoryFailTXT.DecimalPlaces = 2;
 
                     CategorySuccessTXT.Enabled = true;
-                    CategorySuccessTXT.Maximum = 0;
-                    CategorySuccessTXT.Minimum = 0;
+                    CategorySuccessTXT.Maximum = 100000;
+                    CategorySuccessTXT.Minimum = -100000;
                     CategorySuccessTXT.DecimalPlaces = 2;
 
                     FieldWorthTXT.Enabled = false;
@@ -369,16 +369,6 @@ namespace Actual_Decision_Maker
 
         private void CategoryFailTXT_ValueChanged(object sender, EventArgs e)
         {
-            if (CategoryTypeTXT.SelectedIndex == 3)
-            {
-                CategorySuccessTXT.Maximum = CategoryFailTXT.Value;
-            }
-            else
-            {
-                CategorySuccessTXT.Minimum = CategoryFailTXT.Value;
-            }
-
-
             if (TableViewer.SelectedCells.Count > 0)
             {
                 categories[TableViewer.SelectedCells[0].ColumnIndex].failValue = CategoryFailTXT.Value;
@@ -388,16 +378,6 @@ namespace Actual_Decision_Maker
 
         private void CategorySuccessTXT_ValueChanged(object sender, EventArgs e)
         {
-            if (CategoryTypeTXT.SelectedIndex == 3)
-            {
-                CategoryFailTXT.Minimum = CategorySuccessTXT.Value;
-            }
-            else
-            {
-                CategoryFailTXT.Maximum = CategorySuccessTXT.Value;
-            }
-
-
             if (TableViewer.SelectedCells.Count > 0)
             {
                 categories[TableViewer.SelectedCells[0].ColumnIndex].successValue = CategorySuccessTXT.Value;
@@ -422,17 +402,8 @@ namespace Actual_Decision_Maker
             CategoryWorthTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].inValue;
             CategoryTypeTXT.SelectedIndex = (int)categories[TableViewer.SelectedCells[0].ColumnIndex].inType;
 
-            if (CategoryTypeTXT.SelectedIndex == 3)
-            {
-                CategorySuccessTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].successValue;
-                CategoryFailTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].failValue;
-            }
-            else
-            {
-                CategoryFailTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].failValue;
-                CategorySuccessTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].successValue;
-            }
-
+            CategoryFailTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].failValue;
+            CategorySuccessTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].successValue;
 
             FieldValueTXT.Focus();
         }
