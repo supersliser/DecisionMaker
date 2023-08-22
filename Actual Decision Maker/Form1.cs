@@ -107,7 +107,7 @@ namespace Actual_Decision_Maker
                 fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inValue = FieldValueTXT.Text;
                 TableViewer.SelectedCells[0].Value = FieldValueTXT.Text;
 
-                CalculateValues();
+                CalculateValue(categories[TableViewer.SelectedCells[0].ColumnIndex], fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex]);
             }
         }
 
@@ -116,70 +116,79 @@ namespace Actual_Decision_Maker
             if (TableViewer.Columns.Count > 0)
             {
                 fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inQuality = (int)FieldWorthTXT.Value;
-                switch (FieldWorthTXT.Value)
-                {
-                    case -1:
-                        TableViewer.SelectedCells[0].Style.BackColor = Color.Red;
-                        break;
-                    case 0:
-                        TableViewer.SelectedCells[0].Style.BackColor = Color.Yellow;
-                        break;
-                    case 1:
-                        TableViewer.SelectedCells[0].Style.BackColor = Color.Green;
-                        break;
-
-                }
+                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex);
                 WorkOutTotalScores();
+            }
+        }
+
+        private void CalculateColours(int Worth, int Column, int Row)
+        {
+            switch (Worth)
+            {
+                case -1:
+                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Red;
+                    break;
+                case 0:
+                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Yellow;
+                    break;
+                case 1:
+                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Green;
+                    break;
+            }
+        }
+
+        private void CalculateValue(Category category, Field item)
+        {
+            if (category.inType != TypeValue.general)
+            {
+                try
+                {
+                    decimal ItemValue = decimal.Parse(item.inValue);
+
+                    if (category.inType == TypeValue.price)
+                    {
+                        if (ItemValue >= category.failValue)
+                        {
+                            item.inQuality = -1;
+                        }
+                        else if (ItemValue <= category.successValue)
+                        {
+                            item.inQuality = 1;
+                        }
+                        else
+                        {
+                            item.inQuality = 0;
+                        }
+                        FieldWorthTXT.Value = item.inQuality;
+                    }
+                    else
+                    {
+                        if (ItemValue <= category.failValue)
+                        {
+                            item.inQuality = -1;
+                        }
+                        else if (ItemValue >= category.successValue)
+                        {
+                            item.inQuality = 1;
+                        }
+                        else
+                        {
+                            item.inQuality = 0;
+                        }
+                        FieldWorthTXT.Value = item.inQuality;
+                    }
+                }
+                catch (FormatException) { }
+                catch (ArgumentNullException) { }
             }
         }
 
         private void CalculateValues()
         {
             Category category = categories[TableViewer.SelectedCells[0].ColumnIndex];
-            if (category.inType != TypeValue.general)
+            foreach (var item in fields[TableViewer.SelectedCells[0].ColumnIndex])
             {
-                foreach (var item in fields[TableViewer.SelectedCells[0].ColumnIndex])
-                {
-                    try
-                    {
-                        decimal ItemValue = decimal.Parse(item.inValue);
-
-                        if (category.inType == TypeValue.price)
-                        {
-                            if (ItemValue >= category.failValue)
-                            {
-                                item.inQuality = -1;
-                            }
-                            else if (ItemValue <= category.successValue)
-                            {
-                                item.inQuality = 1;
-                            }
-                            else
-                            {
-                                item.inQuality = 0;
-                            }
-                            FieldWorthTXT.Value = item.inQuality;
-                        }
-                        else
-                        {
-                            if (ItemValue <= category.failValue)
-                            {
-                                item.inQuality = -1;
-                            }
-                            else if (ItemValue >= category.successValue)
-                            {
-                                item.inQuality = 1;
-                            }
-                            else
-                            {
-                                item.inQuality = 0;
-                            }
-                            FieldWorthTXT.Value = item.inQuality;
-                        }
-                    }
-                    catch (FormatException) { }
-                    catch (ArgumentNullException) { }
-                }
+                CalculateValue(category, item);
             }
         }
 
@@ -269,9 +278,10 @@ namespace Actual_Decision_Maker
                 for (int j = 0; j < categories.Count; j++)
                 {
                     TableViewer.Rows[i].Cells[j].Value = fields[j][i].inValue;
+                    CalculateValue(categories[j], fields[j][i]);
+                    CalculateColours(fields[j][i].inQuality, j, i);
                 }
             }
-
             WorkOutTotalScores();
         }
 
