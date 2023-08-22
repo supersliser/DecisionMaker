@@ -266,7 +266,14 @@ namespace Actual_Decision_Maker
                     HeaderText = category.inName,
                     Resizable = DataGridViewTriState.True,
                     AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
-                    CellTemplate = new DataGridViewTextBoxCell()
+                    CellTemplate = new DataGridViewTextBoxCell(),
+                    HeaderCell = new DataGridViewColumnHeaderCell()
+                    {
+                        Style =
+                        {
+                            WrapMode = DataGridViewTriState.False
+                        }
+                    },
                 });
             }
 
