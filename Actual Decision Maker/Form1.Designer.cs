@@ -56,6 +56,7 @@
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.label5 = new System.Windows.Forms.Label();
             this.CategoryTypeTXT = new System.Windows.Forms.ComboBox();
+            this.AddRowCMD = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
@@ -243,6 +244,7 @@
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.AddCategoryCMD, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel8, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.AddRowCMD, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -298,14 +300,20 @@
             this.CategorySuccessTXT.Enabled = false;
             this.CategorySuccessTXT.Location = new System.Drawing.Point(78, 68);
             this.CategorySuccessTXT.Maximum = new decimal(new int[] {
-            0,
+            999999,
             0,
             0,
             0});
+            this.CategorySuccessTXT.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
             this.CategorySuccessTXT.Name = "CategorySuccessTXT";
             this.CategorySuccessTXT.Size = new System.Drawing.Size(70, 20);
             this.CategorySuccessTXT.TabIndex = 4;
             this.CategorySuccessTXT.ValueChanged += new System.EventHandler(this.CategorySuccessTXT_ValueChanged);
+            this.CategorySuccessTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategorySuccessTXT_KeyPress);
             // 
             // CategoryFailTXT
             // 
@@ -313,14 +321,20 @@
             this.CategoryFailTXT.Enabled = false;
             this.CategoryFailTXT.Location = new System.Drawing.Point(3, 68);
             this.CategoryFailTXT.Maximum = new decimal(new int[] {
-            0,
+            999999,
             0,
             0,
             0});
+            this.CategoryFailTXT.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
             this.CategoryFailTXT.Name = "CategoryFailTXT";
             this.CategoryFailTXT.Size = new System.Drawing.Size(69, 20);
             this.CategoryFailTXT.TabIndex = 2;
             this.CategoryFailTXT.ValueChanged += new System.EventHandler(this.CategoryFailTXT_ValueChanged);
+            this.CategoryFailTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryFailTXT_KeyPress);
             // 
             // tableLayoutPanel3
             // 
@@ -357,6 +371,7 @@
             this.CategoryWorthTXT.Size = new System.Drawing.Size(145, 20);
             this.CategoryWorthTXT.TabIndex = 1;
             this.CategoryWorthTXT.ValueChanged += new System.EventHandler(this.CategoryWorthTXT_ValueChanged);
+            this.CategoryWorthTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryWorthTXT_KeyPress);
             // 
             // tableLayoutPanel2
             // 
@@ -393,14 +408,14 @@
             this.CategoryNameTXT.Size = new System.Drawing.Size(145, 20);
             this.CategoryNameTXT.TabIndex = 1;
             this.CategoryNameTXT.TextChanged += new System.EventHandler(this.CategoryNameTXT_TextChanged);
+            this.CategoryNameTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryNameTXT_KeyPress);
             // 
             // AddCategoryCMD
             // 
             this.AddCategoryCMD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddCategoryCMD.Location = new System.Drawing.Point(317, 3);
             this.AddCategoryCMD.Name = "AddCategoryCMD";
-            this.tableLayoutPanel1.SetRowSpan(this.AddCategoryCMD, 2);
-            this.AddCategoryCMD.Size = new System.Drawing.Size(153, 215);
+            this.AddCategoryCMD.Size = new System.Drawing.Size(153, 104);
             this.AddCategoryCMD.TabIndex = 2;
             this.AddCategoryCMD.Text = "Add Category";
             this.AddCategoryCMD.UseVisualStyleBackColor = true;
@@ -448,6 +463,18 @@
             this.CategoryTypeTXT.TabIndex = 1;
             this.CategoryTypeTXT.Text = "General";
             this.CategoryTypeTXT.SelectedIndexChanged += new System.EventHandler(this.CategoryTypeTXT_SelectedIndexChanged);
+            this.CategoryTypeTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryTypeTXT_KeyPress);
+            // 
+            // AddRowCMD
+            // 
+            this.AddRowCMD.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.AddRowCMD.Location = new System.Drawing.Point(317, 113);
+            this.AddRowCMD.Name = "AddRowCMD";
+            this.AddRowCMD.Size = new System.Drawing.Size(153, 105);
+            this.AddRowCMD.TabIndex = 5;
+            this.AddRowCMD.Text = "Add Row";
+            this.AddRowCMD.UseVisualStyleBackColor = true;
+            this.AddRowCMD.Click += new System.EventHandler(this.AddRowCMD_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -501,7 +528,7 @@
             this.FieldValueTXT.Name = "FieldValueTXT";
             this.FieldValueTXT.Size = new System.Drawing.Size(149, 20);
             this.FieldValueTXT.TabIndex = 1;
-            this.FieldValueTXT.TextChanged += new System.EventHandler(this.FieldValueTXT_TextChanged);
+            this.FieldValueTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldValueTXT_KeyPress);
             // 
             // tableLayoutPanel6
             // 
@@ -536,7 +563,7 @@
             this.FieldWorthTXT.Name = "FieldWorthTXT";
             this.FieldWorthTXT.Size = new System.Drawing.Size(150, 20);
             this.FieldWorthTXT.TabIndex = 2;
-            this.FieldWorthTXT.ValueChanged += new System.EventHandler(this.FieldWorthTXT_ValueChanged);
+            this.FieldWorthTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldWorthTXT_KeyPress);
             // 
             // label4
             // 
@@ -656,5 +683,6 @@
         private System.Windows.Forms.NumericUpDown CategoryFailTXT;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.NumericUpDown CategorySuccessTXT;
+        private System.Windows.Forms.Button AddRowCMD;
     }
 }
