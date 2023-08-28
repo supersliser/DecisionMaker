@@ -340,6 +340,7 @@ namespace Actual_Decision_Maker
                     CategorySuccessTXT.DecimalPlaces = 0;
 
                     FieldWorthTXT.Enabled = true;
+                    FieldWorthTXT.Value = 0;
                     break;
                 case TypeValue.boolean:
                     CategoryFailTXT.Enabled = false;
