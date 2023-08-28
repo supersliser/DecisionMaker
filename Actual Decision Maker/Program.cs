@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.IO;
-using System.Web;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace Actual_Decision_Maker
@@ -33,17 +25,6 @@ namespace Actual_Decision_Maker
             //        break;
             //}
         }
-    }
-
-    class TableTemp
-    {
-
-    }
-
-    struct Point
-    {
-        public int x;
-        public int y;
     }
 
     public class Category
@@ -178,47 +159,6 @@ namespace Actual_Decision_Maker
             {
                 return (int)Quality;
             }
-        }
-    }
-
-    class FileBrowser
-    {
-        protected string FileName;
-        protected string FileDirectory;
-
-        public string inFileName
-        {
-            set
-            {
-                FileName = value;
-            }
-            get
-            {
-                return FileName;
-            }
-        }
-        public string inFileDirectory
-        {
-            set
-            {
-                FileDirectory = value;
-            }
-            get
-            {
-                return FileDirectory;
-            }
-        }
-
-        public void WriteValue(string input)
-        {
-            StreamWriter writer = new StreamWriter(FileDirectory + FileName);
-            writer.Write(input);
-        }
-
-        public string ReadValue()
-        {
-            StreamReader reader = new StreamReader(FileDirectory + FileName);
-            return reader.ReadToEnd();
         }
     }
 

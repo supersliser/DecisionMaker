@@ -2,15 +2,9 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Net.Http.Headers;
-using System.Runtime.CompilerServices;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Actual_Decision_Maker
@@ -64,12 +58,21 @@ namespace Actual_Decision_Maker
                 CategoryTypeTXT.SelectedIndex = (int)TypeValue.general;
                 HandleCategoryTypeChange(TypeValue.general);
 
+                if (TableViewer.Rows.Count == 0)
+                {
+                    TableViewer.Rows.Add();
+                    for (int i = 0; i < fields.Count; i++)
+                    {
+                        fields[i].Add(new Field());
+                    }
+                    TotalScoreTable.Rows.Add();
+                }
 
                 FieldValueTXT.Focus();
             }
         }
 
-        private void AddFieldCMD_Click(object sender, EventArgs e)
+        private void AddRowCMD_Click(object sender, EventArgs e)
         {
             TableViewer.Rows.Add();
             for (int i = 0; i < fields.Count; i++)
@@ -77,6 +80,22 @@ namespace Actual_Decision_Maker
                 fields[i].Add(new Field());
             }
             TotalScoreTable.Rows.Add();
+        }
+
+        private void AddFieldCMD_Click(object sender, EventArgs e)
+        {
+            if (FieldValueTXT.Text == "") { return; }
+            if (TableViewer.Rows.Count > 0)
+            {
+                fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inValue = FieldValueTXT.Text;
+                TableViewer.SelectedCells[0].Value = FieldValueTXT.Text;
+
+                CalculateValue(categories[TableViewer.SelectedCells[0].ColumnIndex], fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex]);
+
+                fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inQuality = (int)FieldWorthTXT.Value;
+                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex);
+                WorkOutTotalScores();
+            }
         }
 
         private void WorkOutTotalScores()
@@ -99,28 +118,6 @@ namespace Actual_Decision_Maker
             }
         }
 
-        private void FieldValueTXT_TextChanged(object sender, EventArgs e)
-        {
-            if (FieldValueTXT.Text == "") { return; }
-            if (TableViewer.Rows.Count > 0)
-            {
-                fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inValue = FieldValueTXT.Text;
-                TableViewer.SelectedCells[0].Value = FieldValueTXT.Text;
-
-                CalculateValue(categories[TableViewer.SelectedCells[0].ColumnIndex], fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex]);
-            }
-        }
-
-        private void FieldWorthTXT_ValueChanged(object sender, EventArgs e)
-        {
-            if (TableViewer.Columns.Count > 0)
-            {
-                fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inQuality = (int)FieldWorthTXT.Value;
-                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex);
-                WorkOutTotalScores();
-            }
-        }
-
         private void CalculateColours(int Worth, int Column, int Row)
         {
             switch (Worth)
@@ -139,48 +136,49 @@ namespace Actual_Decision_Maker
 
         private void CalculateValue(Category category, Field item)
         {
-            if (category.inType != TypeValue.general)
+            try
             {
-                try
+                if (category.inValue == 0)
+                {
+                    item.inQuality = 0;
+                }
+                else if (category.inType == TypeValue.price)
                 {
                     decimal ItemValue = decimal.Parse(item.inValue);
-
-                    if (category.inType == TypeValue.price)
+                    if (ItemValue >= category.failValue)
                     {
-                        if (ItemValue >= category.failValue)
-                        {
-                            item.inQuality = -1;
-                        }
-                        else if (ItemValue <= category.successValue)
-                        {
-                            item.inQuality = 1;
-                        }
-                        else
-                        {
-                            item.inQuality = 0;
-                        }
-                        FieldWorthTXT.Value = item.inQuality;
+                        item.inQuality = -1;
+                    }
+                    else if (ItemValue <= category.successValue)
+                    {
+                        item.inQuality = 1;
                     }
                     else
                     {
-                        if (ItemValue <= category.failValue)
-                        {
-                            item.inQuality = -1;
-                        }
-                        else if (ItemValue >= category.successValue)
-                        {
-                            item.inQuality = 1;
-                        }
-                        else
-                        {
-                            item.inQuality = 0;
-                        }
-                        FieldWorthTXT.Value = item.inQuality;
+                        item.inQuality = 0;
                     }
+                    FieldWorthTXT.Value = item.inQuality;
                 }
-                catch (FormatException) { }
-                catch (ArgumentNullException) { }
+                else
+                {
+                    decimal ItemValue = decimal.Parse(item.inValue);
+                    if (ItemValue <= category.failValue)
+                    {
+                        item.inQuality = -1;
+                    }
+                    else if (ItemValue >= category.successValue)
+                    {
+                        item.inQuality = 1;
+                    }
+                    else
+                    {
+                        item.inQuality = 0;
+                    }
+                    FieldWorthTXT.Value = item.inQuality;
+                }
             }
+            catch (FormatException) { }
+            catch (ArgumentNullException) { }
         }
 
         private void CalculateValues()
@@ -330,13 +328,9 @@ namespace Actual_Decision_Maker
             {
                 case TypeValue.general:
                     CategoryFailTXT.Enabled = false;
-                    CategoryFailTXT.Maximum = 0;
-                    CategoryFailTXT.Minimum = 0;
                     CategoryFailTXT.DecimalPlaces = 0;
 
                     CategorySuccessTXT.Enabled = false;
-                    CategorySuccessTXT.Maximum = 0;
-                    CategorySuccessTXT.Minimum = 0;
                     CategorySuccessTXT.DecimalPlaces = 0;
 
                     FieldWorthTXT.Enabled = true;
@@ -344,26 +338,18 @@ namespace Actual_Decision_Maker
                     break;
                 case TypeValue.boolean:
                     CategoryFailTXT.Enabled = false;
-                    CategoryFailTXT.Maximum = 0;
-                    CategoryFailTXT.Minimum = 0;
                     CategoryFailTXT.DecimalPlaces = 0;
 
                     CategorySuccessTXT.Enabled = false;
-                    CategorySuccessTXT.Maximum = 1;
-                    CategorySuccessTXT.Minimum = 1;
                     CategorySuccessTXT.DecimalPlaces = 0;
 
                     FieldWorthTXT.Enabled = false;
                     break;
                 case TypeValue.number:
                     CategoryFailTXT.Enabled = true;
-                    CategoryFailTXT.Maximum = 100000;
-                    CategoryFailTXT.Minimum = -100000;
                     CategoryFailTXT.DecimalPlaces = 3;
 
                     CategorySuccessTXT.Enabled = true;
-                    CategorySuccessTXT.Maximum = 100000;
-                    CategorySuccessTXT.Minimum = -100000;
                     CategorySuccessTXT.DecimalPlaces = 3;
 
 
@@ -371,13 +357,9 @@ namespace Actual_Decision_Maker
                     break;
                 case TypeValue.price:
                     CategoryFailTXT.Enabled = true;
-                    CategoryFailTXT.Maximum = 100000;
-                    CategoryFailTXT.Minimum = -100000;
                     CategoryFailTXT.DecimalPlaces = 2;
 
                     CategorySuccessTXT.Enabled = true;
-                    CategorySuccessTXT.Maximum = 100000;
-                    CategorySuccessTXT.Minimum = -100000;
                     CategorySuccessTXT.DecimalPlaces = 2;
 
                     FieldWorthTXT.Enabled = false;
@@ -424,6 +406,62 @@ namespace Actual_Decision_Maker
             CategorySuccessTXT.Value = categories[TableViewer.SelectedCells[0].ColumnIndex].successValue;
 
             FieldValueTXT.Focus();
+        }
+
+        private void CategoryNameTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddCategoryCMD.PerformClick();
+            }
+        }
+
+        private void CategoryWorthTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddCategoryCMD.PerformClick();
+            }
+        }
+
+        private void CategoryTypeTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddCategoryCMD.PerformClick();
+            }
+        }
+
+        private void CategoryFailTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddCategoryCMD.PerformClick();
+            }
+        }
+
+        private void CategorySuccessTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddCategoryCMD.PerformClick();
+            }
+        }
+
+        private void FieldValueTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddFieldCMD.PerformClick();
+            }
+        }
+
+        private void FieldWorthTXT_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (char)13)
+            {
+                AddFieldCMD.PerformClick();
+            }
         }
     }
 
