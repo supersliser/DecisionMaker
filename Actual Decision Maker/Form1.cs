@@ -122,7 +122,7 @@ namespace Actual_Decision_Maker
         {
             if (CatWorthZero)
             {
-                TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.White;
+                TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Black;
             }
             else
             {
