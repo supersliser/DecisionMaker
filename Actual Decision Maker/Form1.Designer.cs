@@ -590,7 +590,8 @@
             // 
             // saveFileDialog1
             // 
-            this.saveFileDialog1.DefaultExt = "JavaScript Object Notation files (*.json)|*.json";
+            this.saveFileDialog1.DefaultExt = "json";
+            this.saveFileDialog1.Filter = "Javascript Object Notation (.json) | *.json";
             this.saveFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.saveFileDialog1_FileOk);
             // 
             // openFileDialog1

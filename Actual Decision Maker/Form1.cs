@@ -37,7 +37,7 @@ namespace Actual_Decision_Maker
                         Name = temp.inName,
                         HeaderText = temp.inName,
                         Resizable = DataGridViewTriState.True,
-                        AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                        AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                         CellTemplate = new DataGridViewTextBoxCell()
                     });
 
@@ -142,39 +142,41 @@ namespace Actual_Decision_Maker
                 {
                     item.inQuality = 0;
                 }
-                else if (category.inType == TypeValue.price)
+                else if (category.inType == TypeValue.number || category.inType == TypeValue.price) 
                 {
                     decimal ItemValue = decimal.Parse(item.inValue);
-                    if (ItemValue >= category.failValue)
+                    if (category.successValue > category.failValue)
                     {
-                        item.inQuality = -1;
-                    }
-                    else if (ItemValue <= category.successValue)
-                    {
-                        item.inQuality = 1;
+                        if (ItemValue >= category.successValue)
+                        {
+                            item.inQuality = -1;
+                        }
+                        else if (ItemValue <= category.failValue)
+                        {
+                            item.inQuality = 1;
+                        }
+                        else
+                        {
+                            item.inQuality = 0;
+                        }
+                        FieldWorthTXT.Value = item.inQuality;
                     }
                     else
                     {
-                        item.inQuality = 0;
+                        if (ItemValue >= category.failValue)
+                        {
+                            item.inQuality = -1;
+                        }
+                        else if (ItemValue <= category.successValue)
+                        {
+                            item.inQuality = 1;
+                        }
+                        else
+                        {
+                            item.inQuality = 0;
+                        }
+                        FieldWorthTXT.Value = item.inQuality;
                     }
-                    FieldWorthTXT.Value = item.inQuality;
-                }
-                else
-                {
-                    decimal ItemValue = decimal.Parse(item.inValue);
-                    if (ItemValue <= category.failValue)
-                    {
-                        item.inQuality = -1;
-                    }
-                    else if (ItemValue >= category.successValue)
-                    {
-                        item.inQuality = 1;
-                    }
-                    else
-                    {
-                        item.inQuality = 0;
-                    }
-                    FieldWorthTXT.Value = item.inQuality;
                 }
             }
             catch (FormatException) { }
@@ -192,12 +194,15 @@ namespace Actual_Decision_Maker
 
         private void deletePreviousCategoryToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            fields.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
-            categories.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
-            TableViewer.Columns.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
-            if (TableViewer.ColumnCount == 0)
+            if (TableViewer.SelectedCells.Count > 0)
             {
-                TotalScoreTable.Rows.RemoveAt(1);
+                fields.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
+                categories.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
+                TableViewer.Columns.RemoveAt(TableViewer.SelectedCells[0].ColumnIndex);
+                if (TableViewer.ColumnCount == 0)
+                {
+                    TotalScoreTable.Rows.RemoveAt(1);
+                }
             }
         }
 
