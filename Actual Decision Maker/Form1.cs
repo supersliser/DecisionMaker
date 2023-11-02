@@ -123,6 +123,7 @@ namespace Actual_Decision_Maker
             if (CatWorthZero)
             {
                 TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Black;
+                TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.White;
             }
             else
             {
@@ -130,12 +131,15 @@ namespace Actual_Decision_Maker
                 {
                     case -1:
                         TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Red;
+                        TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.Black;
                         break;
                     case 0:
                         TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Yellow;
+                        TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.Black;
                         break;
                     case 1:
                         TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Green;
+                        TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.Black;
                         break;
                 }
             }    
@@ -149,16 +153,28 @@ namespace Actual_Decision_Maker
                 {
                     item.inQuality = 0;
                 }
+                else if (category.inType == TypeValue.boolean)
+                {
+                    decimal ItemValue = decimal.Parse(item.inValue);
+                    if (ItemValue == 0)
+                    {
+                        item.inQuality = -1;
+                    }
+                    else
+                    {
+                        item.inQuality = 1;
+                    }
+                }
                 else if (category.inType == TypeValue.number || category.inType == TypeValue.price) 
                 {
                     decimal ItemValue = decimal.Parse(item.inValue);
                     if (category.successValue > category.failValue)
                     {
-                        if (ItemValue >= category.successValue)
+                        if (ItemValue <= category.failValue)
                         {
                             item.inQuality = -1;
                         }
-                        else if (ItemValue <= category.failValue)
+                        else if (ItemValue >= category.successValue)
                         {
                             item.inQuality = 1;
                         }
