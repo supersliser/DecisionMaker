@@ -93,7 +93,7 @@ namespace Actual_Decision_Maker
                 CalculateValue(categories[TableViewer.SelectedCells[0].ColumnIndex], fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex]);
 
                 fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inQuality = (int)FieldWorthTXT.Value;
-                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex);
+                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex, categories[TableViewer.SelectedCells[0].ColumnIndex].inValue == 0);
                 WorkOutTotalScores();
             }
         }
@@ -118,20 +118,27 @@ namespace Actual_Decision_Maker
             }
         }
 
-        private void CalculateColours(int Worth, int Column, int Row)
+        private void CalculateColours(int Worth, int Column, int Row, bool CatWorthZero)
         {
-            switch (Worth)
+            if (CatWorthZero)
             {
-                case -1:
-                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Red;
-                    break;
-                case 0:
-                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Yellow;
-                    break;
-                case 1:
-                    TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Green;
-                    break;
+                TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.White;
             }
+            else
+            {
+                switch (Worth)
+                {
+                    case -1:
+                        TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Red;
+                        break;
+                    case 0:
+                        TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Yellow;
+                        break;
+                    case 1:
+                        TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Green;
+                        break;
+                }
+            }    
         }
 
         private void CalculateValue(Category category, Field item)
@@ -289,7 +296,7 @@ namespace Actual_Decision_Maker
                 {
                     TableViewer.Rows[i].Cells[j].Value = fields[j][i].inValue;
                     CalculateValue(categories[j], fields[j][i]);
-                    CalculateColours(fields[j][i].inQuality, j, i);
+                    CalculateColours(fields[j][i].inQuality, j, i, categories[j].inValue == 0);
                 }
             }
             WorkOutTotalScores();

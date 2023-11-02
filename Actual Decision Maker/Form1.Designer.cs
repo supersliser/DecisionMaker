@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.TableViewer = new System.Windows.Forms.DataGridView();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
@@ -100,10 +102,14 @@
             this.TableViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.TableViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableViewer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.TableViewer.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TableViewer.Location = new System.Drawing.Point(3, 3);
             this.TableViewer.MultiSelect = false;
             this.TableViewer.Name = "TableViewer";
             this.TableViewer.ReadOnly = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            this.TableViewer.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.TableViewer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TableViewer.Size = new System.Drawing.Size(651, 195);
             this.TableViewer.TabIndex = 0;
@@ -153,9 +159,13 @@
             this.TotalScore});
             this.TotalScoreTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TotalScoreTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.TotalScoreTable.GridColor = System.Drawing.SystemColors.ControlDarkDark;
             this.TotalScoreTable.Location = new System.Drawing.Point(660, 3);
             this.TotalScoreTable.MultiSelect = false;
             this.TotalScoreTable.Name = "TotalScoreTable";
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            this.TotalScoreTable.RowsDefaultCellStyle = dataGridViewCellStyle2;
             this.TotalScoreTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
             this.TotalScoreTable.Size = new System.Drawing.Size(137, 195);
             this.TotalScoreTable.TabIndex = 1;
@@ -169,6 +179,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletePreviousCategoryToolStripMenuItem,
             this.deleteItemToolStripMenuItem,
@@ -183,6 +194,7 @@
             // 
             // deletePreviousCategoryToolStripMenuItem
             // 
+            this.deletePreviousCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deletePreviousCategoryToolStripMenuItem.Name = "deletePreviousCategoryToolStripMenuItem";
             this.deletePreviousCategoryToolStripMenuItem.Size = new System.Drawing.Size(103, 20);
             this.deletePreviousCategoryToolStripMenuItem.Text = "Delete Category";
@@ -190,6 +202,7 @@
             // 
             // deleteItemToolStripMenuItem
             // 
+            this.deleteItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteItemToolStripMenuItem.Name = "deleteItemToolStripMenuItem";
             this.deleteItemToolStripMenuItem.Size = new System.Drawing.Size(79, 20);
             this.deleteItemToolStripMenuItem.Text = "Delete Item";
@@ -197,6 +210,7 @@
             // 
             // newFileToolStripMenuItem
             // 
+            this.newFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
             this.newFileToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.newFileToolStripMenuItem.Text = "New File";
@@ -204,6 +218,7 @@
             // 
             // openFileToolStripMenuItem
             // 
+            this.openFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
             this.openFileToolStripMenuItem.Size = new System.Drawing.Size(69, 20);
             this.openFileToolStripMenuItem.Text = "Open File";
@@ -211,6 +226,7 @@
             // 
             // saveFileToolStripMenuItem
             // 
+            this.saveFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
             this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.saveFileToolStripMenuItem.Text = "Save File";
@@ -297,7 +313,9 @@
             // CategorySuccessTXT
             // 
             this.CategorySuccessTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategorySuccessTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategorySuccessTXT.Enabled = false;
+            this.CategorySuccessTXT.ForeColor = System.Drawing.Color.White;
             this.CategorySuccessTXT.Location = new System.Drawing.Point(78, 68);
             this.CategorySuccessTXT.Maximum = new decimal(new int[] {
             999999,
@@ -318,7 +336,9 @@
             // CategoryFailTXT
             // 
             this.CategoryFailTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryFailTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategoryFailTXT.Enabled = false;
+            this.CategoryFailTXT.ForeColor = System.Drawing.Color.White;
             this.CategoryFailTXT.Location = new System.Drawing.Point(3, 68);
             this.CategoryFailTXT.Maximum = new decimal(new int[] {
             999999,
@@ -366,6 +386,8 @@
             // CategoryWorthTXT
             // 
             this.CategoryWorthTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryWorthTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CategoryWorthTXT.ForeColor = System.Drawing.Color.White;
             this.CategoryWorthTXT.Location = new System.Drawing.Point(3, 68);
             this.CategoryWorthTXT.Name = "CategoryWorthTXT";
             this.CategoryWorthTXT.Size = new System.Drawing.Size(145, 20);
@@ -403,6 +425,8 @@
             // CategoryNameTXT
             // 
             this.CategoryNameTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryNameTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CategoryNameTXT.ForeColor = System.Drawing.Color.White;
             this.CategoryNameTXT.Location = new System.Drawing.Point(3, 68);
             this.CategoryNameTXT.Name = "CategoryNameTXT";
             this.CategoryNameTXT.Size = new System.Drawing.Size(145, 20);
@@ -412,13 +436,14 @@
             // 
             // AddCategoryCMD
             // 
+            this.AddCategoryCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AddCategoryCMD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddCategoryCMD.Location = new System.Drawing.Point(317, 3);
             this.AddCategoryCMD.Name = "AddCategoryCMD";
             this.AddCategoryCMD.Size = new System.Drawing.Size(153, 104);
             this.AddCategoryCMD.TabIndex = 2;
             this.AddCategoryCMD.Text = "Add Category";
-            this.AddCategoryCMD.UseVisualStyleBackColor = true;
+            this.AddCategoryCMD.UseVisualStyleBackColor = false;
             this.AddCategoryCMD.Click += new System.EventHandler(this.AddCategoryCMD_Click);
             // 
             // tableLayoutPanel8
@@ -451,6 +476,8 @@
             // CategoryTypeTXT
             // 
             this.CategoryTypeTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.CategoryTypeTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.CategoryTypeTXT.ForeColor = System.Drawing.Color.White;
             this.CategoryTypeTXT.FormattingEnabled = true;
             this.CategoryTypeTXT.Items.AddRange(new object[] {
             "General",
@@ -467,13 +494,14 @@
             // 
             // AddRowCMD
             // 
+            this.AddRowCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AddRowCMD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddRowCMD.Location = new System.Drawing.Point(317, 113);
             this.AddRowCMD.Name = "AddRowCMD";
             this.AddRowCMD.Size = new System.Drawing.Size(153, 105);
             this.AddRowCMD.TabIndex = 5;
             this.AddRowCMD.Text = "Add Row";
-            this.AddRowCMD.UseVisualStyleBackColor = true;
+            this.AddRowCMD.UseVisualStyleBackColor = false;
             this.AddRowCMD.Click += new System.EventHandler(this.AddRowCMD_Click);
             // 
             // tableLayoutPanel4
@@ -524,6 +552,8 @@
             // FieldValueTXT
             // 
             this.FieldValueTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.FieldValueTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FieldValueTXT.ForeColor = System.Drawing.Color.White;
             this.FieldValueTXT.Location = new System.Drawing.Point(3, 68);
             this.FieldValueTXT.Name = "FieldValueTXT";
             this.FieldValueTXT.Size = new System.Drawing.Size(149, 20);
@@ -549,6 +579,8 @@
             // FieldWorthTXT
             // 
             this.FieldWorthTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.FieldWorthTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.FieldWorthTXT.ForeColor = System.Drawing.Color.White;
             this.FieldWorthTXT.Location = new System.Drawing.Point(3, 68);
             this.FieldWorthTXT.Maximum = new decimal(new int[] {
             1,
@@ -578,6 +610,7 @@
             // 
             // AddFieldCMD
             // 
+            this.AddFieldCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tableLayoutPanel4.SetColumnSpan(this.AddFieldCMD, 2);
             this.AddFieldCMD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.AddFieldCMD.Location = new System.Drawing.Point(3, 113);
@@ -585,7 +618,7 @@
             this.AddFieldCMD.Size = new System.Drawing.Size(317, 105);
             this.AddFieldCMD.TabIndex = 3;
             this.AddFieldCMD.Text = "Add Field";
-            this.AddFieldCMD.UseVisualStyleBackColor = true;
+            this.AddFieldCMD.UseVisualStyleBackColor = false;
             this.AddFieldCMD.Click += new System.EventHandler(this.AddFieldCMD_Click);
             // 
             // saveFileDialog1
@@ -603,8 +636,10 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.splitContainer1);
+            this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Form1";
