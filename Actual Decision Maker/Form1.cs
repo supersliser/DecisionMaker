@@ -523,6 +523,11 @@ namespace Actual_Decision_Maker
                 TableViewer_Scroll(TableViewer, e);
             }
         }
+
+        private void TableViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            TableViewer.SelectedCells[0].OwningColumn.Frozen = !TableViewer.SelectedCells[0].OwningColumn.Frozen;
+        }
     }
 
     public class Table

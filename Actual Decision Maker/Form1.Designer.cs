@@ -146,6 +146,7 @@
             this.TableViewer.Size = new System.Drawing.Size(651, 195);
             this.TableViewer.TabIndex = 0;
             this.TableViewer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableViewer_CellClick);
+            this.TableViewer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableViewer_CellDoubleClick);
             this.TableViewer.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TableViewer_Scroll);
             // 
             // splitContainer1
