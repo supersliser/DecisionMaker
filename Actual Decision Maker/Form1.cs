@@ -155,15 +155,19 @@ namespace Actual_Decision_Maker
                 }
                 else if (category.inType == TypeValue.boolean)
                 {
-                    decimal ItemValue = decimal.Parse(item.inValue);
-                    if (ItemValue == 0)
+                    try
                     {
-                        item.inQuality = -1;
+                        string ItemValue = item.inValue;
+                        if (ItemValue == "0")
+                        {
+                            item.inQuality = -1;
+                        }
+                        else
+                        {
+                            item.inQuality = 1;
+                        }
                     }
-                    else
-                    {
-                        item.inQuality = 1;
-                    }
+                    catch (NullReferenceException) { }
                 }
                 else if (category.inType == TypeValue.number || category.inType == TypeValue.price) 
                 {
@@ -291,7 +295,7 @@ namespace Actual_Decision_Maker
                     Name = category.inName,
                     HeaderText = category.inName,
                     Resizable = DataGridViewTriState.True,
-                    AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                    AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
                     CellTemplate = new DataGridViewTextBoxCell(),
                     HeaderCell = new DataGridViewColumnHeaderCell()
                     {
@@ -484,11 +488,19 @@ namespace Actual_Decision_Maker
             }
         }
 
-        private void FieldWorthTXT_KeyPress(object sender, KeyPressEventArgs e)
+        private void TableViewer_Scroll(object sender, ScrollEventArgs e)
         {
-            if (e.KeyChar == (char)13)
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
             {
-                AddFieldCMD.PerformClick();
+                TotalScoreTable_Scroll(TotalScoreTable, e);
+            }
+        }
+
+        private void TotalScoreTable_Scroll(object sender, ScrollEventArgs e)
+        {
+            if (e.ScrollOrientation == ScrollOrientation.VerticalScroll)
+            {
+                TableViewer_Scroll(TableViewer, e);
             }
         }
     }
