@@ -93,7 +93,7 @@ namespace Actual_Decision_Maker
                 CalculateValue(categories[TableViewer.SelectedCells[0].ColumnIndex], fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex]);
 
                 fields[TableViewer.SelectedCells[0].ColumnIndex][TableViewer.SelectedCells[0].RowIndex].inQuality = (int)FieldWorthTXT.Value;
-                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex, categories[TableViewer.SelectedCells[0].ColumnIndex].inValue == 0);
+                CalculateColours((int)FieldWorthTXT.Value, TableViewer.SelectedCells[0].ColumnIndex, TableViewer.SelectedCells[0].RowIndex, categories[TableViewer.SelectedCells[0].ColumnIndex].inValue == 0, FieldValueTXT.Text == "");
                 WorkOutTotalScores();
             }
         }
@@ -118,9 +118,9 @@ namespace Actual_Decision_Maker
             }
         }
 
-        private void CalculateColours(int Worth, int Column, int Row, bool CatWorthZero)
+        private void CalculateColours(int Worth, int Column, int Row, bool CatWorthZero, bool IsBlank)
         {
-            if (CatWorthZero)
+            if (CatWorthZero || IsBlank)
             {
                 TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Black;
                 TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.White;
@@ -316,7 +316,7 @@ namespace Actual_Decision_Maker
                 {
                     TableViewer.Rows[i].Cells[j].Value = fields[j][i].inValue;
                     CalculateValue(categories[j], fields[j][i]);
-                    CalculateColours(fields[j][i].inQuality, j, i, categories[j].inValue == 0);
+                    CalculateColours(fields[j][i].inQuality, j, i, categories[j].inValue == 0, fields[j][i].inValue == "");
                 }
             }
             WorkOutTotalScores();
