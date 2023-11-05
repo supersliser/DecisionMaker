@@ -120,7 +120,12 @@ namespace Actual_Decision_Maker
 
         private void CalculateColours(int Worth, int Column, int Row, bool CatWorthZero, bool IsBlank)
         {
-            if (CatWorthZero || IsBlank)
+            if (CatWorthZero)
+            {
+                TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Black;
+                TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.White;
+            }
+            else if (IsBlank)
             {
                 TableViewer.Rows[Row].Cells[Column].Style.BackColor = Color.Black;
                 TableViewer.Rows[Row].Cells[Column].Style.ForeColor = Color.White;
@@ -245,6 +250,8 @@ namespace Actual_Decision_Maker
 
         private void newFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            saveFileDialog1.FileName = "";
+            openFileDialog1.FileName = "";
             categories.Clear();
             fields.Clear();
             TableViewer.Columns.Clear();
@@ -260,10 +267,22 @@ namespace Actual_Decision_Maker
 
         private void saveFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            saveFileDialog1.ShowDialog();
+            if (saveFileDialog1.FileName == "")
+            {
+                saveFileDialog1.ShowDialog();
+            }
+            else
+            {
+                saveFile();
+            }
         }
 
         private void saveFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+            saveFile();
+        }
+
+        private void saveFile()
         {
             string categoriesJSON = JsonConvert.SerializeObject(new Table()
             {
@@ -283,6 +302,7 @@ namespace Actual_Decision_Maker
 
         private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
         {
+            saveFileDialog1.FileName = openFileDialog1.FileName;
             StreamReader reader = new StreamReader(openFileDialog1.FileName);
             Table temp = JsonConvert.DeserializeObject<Table>(reader.ReadToEnd());
             categories = temp.categories;
@@ -316,7 +336,7 @@ namespace Actual_Decision_Maker
                 {
                     TableViewer.Rows[i].Cells[j].Value = fields[j][i].inValue;
                     CalculateValue(categories[j], fields[j][i]);
-                    CalculateColours(fields[j][i].inQuality, j, i, categories[j].inValue == 0, fields[j][i].inValue == "");
+                    CalculateColours(fields[j][i].inQuality, j, i, categories[j].inValue == 0, fields[j][i].inValue == null);
                 }
             }
             WorkOutTotalScores();
