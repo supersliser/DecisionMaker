@@ -114,6 +114,7 @@
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.TableViewer.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.TableViewer.ColumnHeadersHeight = 34;
             this.TableViewer.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.Black;
@@ -126,7 +127,8 @@
             this.TableViewer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TableViewer.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TableViewer.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TableViewer.Location = new System.Drawing.Point(3, 3);
+            this.TableViewer.Location = new System.Drawing.Point(4, 5);
+            this.TableViewer.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TableViewer.MultiSelect = false;
             this.TableViewer.Name = "TableViewer";
             this.TableViewer.ReadOnly = true;
@@ -143,7 +145,7 @@
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
             this.TableViewer.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.TableViewer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TableViewer.Size = new System.Drawing.Size(651, 195);
+            this.TableViewer.Size = new System.Drawing.Size(977, 303);
             this.TableViewer.TabIndex = 0;
             this.TableViewer.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableViewer_CellClick);
             this.TableViewer.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.TableViewer_CellDoubleClick);
@@ -153,6 +155,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -164,8 +167,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
-            this.splitContainer1.Size = new System.Drawing.Size(800, 450);
-            this.splitContainer1.SplitterDistance = 225;
+            this.splitContainer1.Size = new System.Drawing.Size(1200, 692);
+            this.splitContainer1.SplitterDistance = 346;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -176,12 +180,13 @@
             this.tableLayoutPanel7.Controls.Add(this.TotalScoreTable, 1, 0);
             this.tableLayoutPanel7.Controls.Add(this.TableViewer, 0, 0);
             this.tableLayoutPanel7.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 24);
+            this.tableLayoutPanel7.Location = new System.Drawing.Point(0, 33);
+            this.tableLayoutPanel7.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(800, 201);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1200, 313);
             this.tableLayoutPanel7.TabIndex = 2;
             // 
             // TotalScoreTable
@@ -212,7 +217,8 @@
             this.TotalScoreTable.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.TotalScoreTable.Enabled = false;
             this.TotalScoreTable.GridColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.TotalScoreTable.Location = new System.Drawing.Point(660, 3);
+            this.TotalScoreTable.Location = new System.Drawing.Point(989, 5);
+            this.TotalScoreTable.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TotalScoreTable.MultiSelect = false;
             this.TotalScoreTable.Name = "TotalScoreTable";
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -229,7 +235,7 @@
             this.TotalScoreTable.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.TotalScoreTable.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.TotalScoreTable.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.TotalScoreTable.Size = new System.Drawing.Size(137, 195);
+            this.TotalScoreTable.Size = new System.Drawing.Size(207, 303);
             this.TotalScoreTable.TabIndex = 1;
             this.TotalScoreTable.Scroll += new System.Windows.Forms.ScrollEventHandler(this.TotalScoreTable_Scroll);
             // 
@@ -245,6 +251,7 @@
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.menuStrip1.GripMargin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deletePreviousCategoryToolStripMenuItem,
@@ -254,8 +261,8 @@
             this.saveFileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Padding = new System.Windows.Forms.Padding(4, 1, 0, 1);
-            this.menuStrip1.Size = new System.Drawing.Size(800, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(6, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1200, 33);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -263,7 +270,7 @@
             // 
             this.deletePreviousCategoryToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deletePreviousCategoryToolStripMenuItem.Name = "deletePreviousCategoryToolStripMenuItem";
-            this.deletePreviousCategoryToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.deletePreviousCategoryToolStripMenuItem.Size = new System.Drawing.Size(155, 29);
             this.deletePreviousCategoryToolStripMenuItem.Text = "Delete Category";
             this.deletePreviousCategoryToolStripMenuItem.Click += new System.EventHandler(this.deletePreviousCategoryToolStripMenuItem_Click);
             // 
@@ -271,7 +278,7 @@
             // 
             this.deleteItemToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.deleteItemToolStripMenuItem.Name = "deleteItemToolStripMenuItem";
-            this.deleteItemToolStripMenuItem.Size = new System.Drawing.Size(79, 22);
+            this.deleteItemToolStripMenuItem.Size = new System.Drawing.Size(119, 29);
             this.deleteItemToolStripMenuItem.Text = "Delete Item";
             this.deleteItemToolStripMenuItem.Click += new System.EventHandler(this.deleteItemToolStripMenuItem_Click);
             // 
@@ -279,7 +286,7 @@
             // 
             this.newFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.newFileToolStripMenuItem.Name = "newFileToolStripMenuItem";
-            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
+            this.newFileToolStripMenuItem.Size = new System.Drawing.Size(94, 29);
             this.newFileToolStripMenuItem.Text = "New File";
             this.newFileToolStripMenuItem.Click += new System.EventHandler(this.newFileToolStripMenuItem_Click);
             // 
@@ -287,7 +294,7 @@
             // 
             this.openFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(69, 22);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(103, 29);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
@@ -295,7 +302,7 @@
             // 
             this.saveFileToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.saveFileToolStripMenuItem.Name = "saveFileToolStripMenuItem";
-            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(64, 22);
+            this.saveFileToolStripMenuItem.Size = new System.Drawing.Size(96, 29);
             this.saveFileToolStripMenuItem.Text = "Save File";
             this.saveFileToolStripMenuItem.Click += new System.EventHandler(this.saveFileToolStripMenuItem_Click);
             // 
@@ -303,6 +310,7 @@
             // 
             this.splitContainer2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer2.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.splitContainer2.Name = "splitContainer2";
             // 
             // splitContainer2.Panel1
@@ -312,8 +320,9 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.tableLayoutPanel4);
-            this.splitContainer2.Size = new System.Drawing.Size(800, 221);
-            this.splitContainer2.SplitterDistance = 472;
+            this.splitContainer2.Size = new System.Drawing.Size(1200, 340);
+            this.splitContainer2.SplitterDistance = 708;
+            this.splitContainer2.SplitterWidth = 6;
             this.splitContainer2.TabIndex = 0;
             // 
             // tableLayoutPanel1
@@ -330,11 +339,12 @@
             this.tableLayoutPanel1.Controls.Add(this.AddRowCMD, 2, 1);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(472, 221);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(708, 340);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // tableLayoutPanel9
@@ -347,21 +357,23 @@
             this.tableLayoutPanel9.Controls.Add(this.CategorySuccessTXT, 1, 1);
             this.tableLayoutPanel9.Controls.Add(this.CategoryFailTXT, 0, 1);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel9.Location = new System.Drawing.Point(160, 113);
+            this.tableLayoutPanel9.Location = new System.Drawing.Point(240, 175);
+            this.tableLayoutPanel9.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel9.Name = "tableLayoutPanel9";
             this.tableLayoutPanel9.RowCount = 2;
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel9.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel9.Size = new System.Drawing.Size(151, 105);
+            this.tableLayoutPanel9.Size = new System.Drawing.Size(228, 160);
             this.tableLayoutPanel9.TabIndex = 4;
             // 
             // label6
             // 
             this.label6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 13);
+            this.label6.Location = new System.Drawing.Point(4, 20);
+            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(69, 26);
+            this.label6.Size = new System.Drawing.Size(106, 40);
             this.label6.TabIndex = 0;
             this.label6.Text = "Category Failure Value";
             this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -370,9 +382,10 @@
             // 
             this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(78, 6);
+            this.label7.Location = new System.Drawing.Point(118, 10);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(70, 39);
+            this.label7.Size = new System.Drawing.Size(106, 60);
             this.label7.TabIndex = 3;
             this.label7.Text = "Category Success Value";
             this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -383,7 +396,8 @@
             this.CategorySuccessTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategorySuccessTXT.Enabled = false;
             this.CategorySuccessTXT.ForeColor = System.Drawing.Color.White;
-            this.CategorySuccessTXT.Location = new System.Drawing.Point(78, 68);
+            this.CategorySuccessTXT.Location = new System.Drawing.Point(118, 107);
+            this.CategorySuccessTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CategorySuccessTXT.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -395,7 +409,7 @@
             0,
             -2147483648});
             this.CategorySuccessTXT.Name = "CategorySuccessTXT";
-            this.CategorySuccessTXT.Size = new System.Drawing.Size(70, 20);
+            this.CategorySuccessTXT.Size = new System.Drawing.Size(106, 26);
             this.CategorySuccessTXT.TabIndex = 4;
             this.CategorySuccessTXT.ValueChanged += new System.EventHandler(this.CategorySuccessTXT_ValueChanged);
             this.CategorySuccessTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategorySuccessTXT_KeyPress);
@@ -406,7 +420,8 @@
             this.CategoryFailTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategoryFailTXT.Enabled = false;
             this.CategoryFailTXT.ForeColor = System.Drawing.Color.White;
-            this.CategoryFailTXT.Location = new System.Drawing.Point(3, 68);
+            this.CategoryFailTXT.Location = new System.Drawing.Point(4, 107);
+            this.CategoryFailTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CategoryFailTXT.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -418,7 +433,7 @@
             0,
             -2147483648});
             this.CategoryFailTXT.Name = "CategoryFailTXT";
-            this.CategoryFailTXT.Size = new System.Drawing.Size(69, 20);
+            this.CategoryFailTXT.Size = new System.Drawing.Size(106, 26);
             this.CategoryFailTXT.TabIndex = 2;
             this.CategoryFailTXT.ValueChanged += new System.EventHandler(this.CategoryFailTXT_ValueChanged);
             this.CategoryFailTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryFailTXT_KeyPress);
@@ -431,21 +446,23 @@
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
             this.tableLayoutPanel3.Controls.Add(this.CategoryWorthTXT, 0, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(160, 3);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(240, 5);
+            this.tableLayoutPanel3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(151, 104);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(228, 160);
             this.tableLayoutPanel3.TabIndex = 1;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label2.Location = new System.Drawing.Point(3, 0);
+            this.label2.Location = new System.Drawing.Point(4, 0);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(145, 52);
+            this.label2.Size = new System.Drawing.Size(220, 80);
             this.label2.TabIndex = 0;
             this.label2.Text = "Category Worth";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -455,9 +472,15 @@
             this.CategoryWorthTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryWorthTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategoryWorthTXT.ForeColor = System.Drawing.Color.White;
-            this.CategoryWorthTXT.Location = new System.Drawing.Point(3, 68);
+            this.CategoryWorthTXT.Location = new System.Drawing.Point(4, 107);
+            this.CategoryWorthTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.CategoryWorthTXT.Minimum = new decimal(new int[] {
+            100,
+            0,
+            0,
+            -2147483648});
             this.CategoryWorthTXT.Name = "CategoryWorthTXT";
-            this.CategoryWorthTXT.Size = new System.Drawing.Size(145, 20);
+            this.CategoryWorthTXT.Size = new System.Drawing.Size(220, 26);
             this.CategoryWorthTXT.TabIndex = 1;
             this.CategoryWorthTXT.ValueChanged += new System.EventHandler(this.CategoryWorthTXT_ValueChanged);
             this.CategoryWorthTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryWorthTXT_KeyPress);
@@ -470,21 +493,23 @@
             this.tableLayoutPanel2.Controls.Add(this.label1, 0, 0);
             this.tableLayoutPanel2.Controls.Add(this.CategoryNameTXT, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel2.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel2.Location = new System.Drawing.Point(4, 5);
+            this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(151, 104);
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(228, 160);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Location = new System.Drawing.Point(3, 0);
+            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(145, 52);
+            this.label1.Size = new System.Drawing.Size(220, 80);
             this.label1.TabIndex = 0;
             this.label1.Text = "Category Name";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -494,9 +519,10 @@
             this.CategoryNameTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.CategoryNameTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.CategoryNameTXT.ForeColor = System.Drawing.Color.White;
-            this.CategoryNameTXT.Location = new System.Drawing.Point(3, 68);
+            this.CategoryNameTXT.Location = new System.Drawing.Point(4, 107);
+            this.CategoryNameTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CategoryNameTXT.Name = "CategoryNameTXT";
-            this.CategoryNameTXT.Size = new System.Drawing.Size(145, 20);
+            this.CategoryNameTXT.Size = new System.Drawing.Size(220, 26);
             this.CategoryNameTXT.TabIndex = 1;
             this.CategoryNameTXT.TextChanged += new System.EventHandler(this.CategoryNameTXT_TextChanged);
             this.CategoryNameTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.CategoryNameTXT_KeyPress);
@@ -505,9 +531,10 @@
             // 
             this.AddCategoryCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AddCategoryCMD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddCategoryCMD.Location = new System.Drawing.Point(317, 3);
+            this.AddCategoryCMD.Location = new System.Drawing.Point(476, 5);
+            this.AddCategoryCMD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddCategoryCMD.Name = "AddCategoryCMD";
-            this.AddCategoryCMD.Size = new System.Drawing.Size(152, 104);
+            this.AddCategoryCMD.Size = new System.Drawing.Size(228, 160);
             this.AddCategoryCMD.TabIndex = 2;
             this.AddCategoryCMD.Text = "Add Category";
             this.AddCategoryCMD.UseVisualStyleBackColor = false;
@@ -521,21 +548,23 @@
             this.tableLayoutPanel8.Controls.Add(this.label5, 0, 0);
             this.tableLayoutPanel8.Controls.Add(this.CategoryTypeTXT, 0, 1);
             this.tableLayoutPanel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel8.Location = new System.Drawing.Point(3, 113);
+            this.tableLayoutPanel8.Location = new System.Drawing.Point(4, 175);
+            this.tableLayoutPanel8.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel8.Name = "tableLayoutPanel8";
             this.tableLayoutPanel8.RowCount = 2;
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel8.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel8.Size = new System.Drawing.Size(151, 105);
+            this.tableLayoutPanel8.Size = new System.Drawing.Size(228, 160);
             this.tableLayoutPanel8.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 19);
+            this.label5.Location = new System.Drawing.Point(4, 30);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(145, 13);
+            this.label5.Size = new System.Drawing.Size(220, 20);
             this.label5.TabIndex = 0;
             this.label5.Text = "Category Data Type";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -551,9 +580,10 @@
             "Boolean",
             "Number",
             "Price"});
-            this.CategoryTypeTXT.Location = new System.Drawing.Point(3, 68);
+            this.CategoryTypeTXT.Location = new System.Drawing.Point(4, 106);
+            this.CategoryTypeTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CategoryTypeTXT.Name = "CategoryTypeTXT";
-            this.CategoryTypeTXT.Size = new System.Drawing.Size(145, 21);
+            this.CategoryTypeTXT.Size = new System.Drawing.Size(220, 28);
             this.CategoryTypeTXT.TabIndex = 1;
             this.CategoryTypeTXT.Text = "General";
             this.CategoryTypeTXT.SelectedIndexChanged += new System.EventHandler(this.CategoryTypeTXT_SelectedIndexChanged);
@@ -563,9 +593,10 @@
             // 
             this.AddRowCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.AddRowCMD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddRowCMD.Location = new System.Drawing.Point(317, 113);
+            this.AddRowCMD.Location = new System.Drawing.Point(476, 175);
+            this.AddRowCMD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddRowCMD.Name = "AddRowCMD";
-            this.AddRowCMD.Size = new System.Drawing.Size(152, 105);
+            this.AddRowCMD.Size = new System.Drawing.Size(228, 160);
             this.AddRowCMD.TabIndex = 5;
             this.AddRowCMD.Text = "Add Row";
             this.AddRowCMD.UseVisualStyleBackColor = false;
@@ -582,11 +613,12 @@
             this.tableLayoutPanel4.Controls.Add(this.AddFieldCMD, 0, 1);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanel4.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
             this.tableLayoutPanel4.RowCount = 2;
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(324, 221);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(486, 340);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // tableLayoutPanel5
@@ -597,21 +629,23 @@
             this.tableLayoutPanel5.Controls.Add(this.label3, 0, 0);
             this.tableLayoutPanel5.Controls.Add(this.FieldValueTXT, 0, 1);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 3);
+            this.tableLayoutPanel5.Location = new System.Drawing.Point(4, 5);
+            this.tableLayoutPanel5.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(156, 104);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(235, 160);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label3.Location = new System.Drawing.Point(3, 0);
+            this.label3.Location = new System.Drawing.Point(4, 0);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(150, 52);
+            this.label3.Size = new System.Drawing.Size(227, 80);
             this.label3.TabIndex = 0;
             this.label3.Text = "Field Value";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -621,9 +655,10 @@
             this.FieldValueTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.FieldValueTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FieldValueTXT.ForeColor = System.Drawing.Color.White;
-            this.FieldValueTXT.Location = new System.Drawing.Point(3, 68);
+            this.FieldValueTXT.Location = new System.Drawing.Point(4, 107);
+            this.FieldValueTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FieldValueTXT.Name = "FieldValueTXT";
-            this.FieldValueTXT.Size = new System.Drawing.Size(150, 20);
+            this.FieldValueTXT.Size = new System.Drawing.Size(227, 26);
             this.FieldValueTXT.TabIndex = 1;
             this.FieldValueTXT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.FieldValueTXT_KeyPress);
             // 
@@ -635,12 +670,13 @@
             this.tableLayoutPanel6.Controls.Add(this.FieldWorthTXT, 0, 1);
             this.tableLayoutPanel6.Controls.Add(this.label4, 0, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel6.Location = new System.Drawing.Point(165, 3);
+            this.tableLayoutPanel6.Location = new System.Drawing.Point(247, 5);
+            this.tableLayoutPanel6.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 2;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(156, 104);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(235, 160);
             this.tableLayoutPanel6.TabIndex = 2;
             // 
             // FieldWorthTXT
@@ -648,7 +684,8 @@
             this.FieldWorthTXT.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.FieldWorthTXT.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.FieldWorthTXT.ForeColor = System.Drawing.Color.White;
-            this.FieldWorthTXT.Location = new System.Drawing.Point(3, 68);
+            this.FieldWorthTXT.Location = new System.Drawing.Point(4, 107);
+            this.FieldWorthTXT.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.FieldWorthTXT.Maximum = new decimal(new int[] {
             1,
             0,
@@ -660,16 +697,17 @@
             0,
             -2147483648});
             this.FieldWorthTXT.Name = "FieldWorthTXT";
-            this.FieldWorthTXT.Size = new System.Drawing.Size(150, 20);
+            this.FieldWorthTXT.Size = new System.Drawing.Size(227, 26);
             this.FieldWorthTXT.TabIndex = 2;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Location = new System.Drawing.Point(3, 0);
+            this.label4.Location = new System.Drawing.Point(4, 0);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(150, 52);
+            this.label4.Size = new System.Drawing.Size(227, 80);
             this.label4.TabIndex = 0;
             this.label4.Text = "Field Worth";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -679,9 +717,10 @@
             this.AddFieldCMD.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.tableLayoutPanel4.SetColumnSpan(this.AddFieldCMD, 2);
             this.AddFieldCMD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.AddFieldCMD.Location = new System.Drawing.Point(3, 113);
+            this.AddFieldCMD.Location = new System.Drawing.Point(4, 175);
+            this.AddFieldCMD.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.AddFieldCMD.Name = "AddFieldCMD";
-            this.AddFieldCMD.Size = new System.Drawing.Size(318, 105);
+            this.AddFieldCMD.Size = new System.Drawing.Size(478, 160);
             this.AddFieldCMD.TabIndex = 3;
             this.AddFieldCMD.Text = "Add Field";
             this.AddFieldCMD.UseVisualStyleBackColor = false;
@@ -700,13 +739,14 @@
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 692);
             this.Controls.Add(this.splitContainer1);
             this.ForeColor = System.Drawing.Color.White;
             this.MainMenuStrip = this.menuStrip1;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "Form1";
             this.Text = "Decision Maker";
             ((System.ComponentModel.ISupportInitialize)(this.TableViewer)).EndInit();
