@@ -115,6 +115,19 @@ namespace Actual_Decision_Maker
                 {
                     TotalScoreTable.Rows[i].Cells[0].Value = score[i];
                 }
+                score.Sort();
+                for (int i = 0; i < score.Count; i++)
+                {
+                    TotalScoreTable.Rows[i].Cells[0].Style.BackColor = Color.Black;
+                    if ((int)TotalScoreTable.Rows[i].Cells[0].Value == score[score.Count - 1] || (int)TotalScoreTable.Rows[i].Cells[0].Value == score[score.Count - 2] || (int)TotalScoreTable.Rows[i].Cells[0].Value == score[score.Count - 3])
+                    {
+                        TotalScoreTable.Rows[i].Cells[0].Style.BackColor = Color.Green;
+                    }
+                    if ((int)TotalScoreTable.Rows[i].Cells[0].Value == score[0] || (int)TotalScoreTable.Rows[i].Cells[0].Value == score[1] || (int)TotalScoreTable.Rows[i].Cells[0].Value == score[2])
+                    {
+                        TotalScoreTable.Rows[i].Cells[0].Style.BackColor = Color.Red;
+                    }
+                }
             }
         }
 
