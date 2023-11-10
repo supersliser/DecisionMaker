@@ -34,7 +34,19 @@ namespace Actual_Decision_Maker
         protected int Type = 0;
         protected decimal FailCriteria = 0;
         protected decimal SuccessCriteria = 0;
+        protected int Width = 150;
 
+        public int ColumnWidth
+        {
+            set
+            {
+                Width = value;
+            }
+            get
+            {
+                return Width;
+            }
+        }
         public string inName
         {
             set

@@ -324,6 +324,7 @@ namespace Actual_Decision_Maker
                             WrapMode = DataGridViewTriState.False
                         }
                     },
+                    Width = category.ColumnWidth
                 });
             }
 
@@ -527,6 +528,11 @@ namespace Actual_Decision_Maker
         private void TableViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             TableViewer.SelectedCells[0].OwningColumn.Frozen = !TableViewer.SelectedCells[0].OwningColumn.Frozen;
+        }
+
+        private void TableViewer_ColumnWidthChanged(object sender, DataGridViewColumnEventArgs e)
+        {
+            categories[TableViewer.SelectedCells[0].ColumnIndex].ColumnWidth = TableViewer.SelectedCells[0].OwningColumn.Width;
         }
     }
 
